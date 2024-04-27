@@ -1,0 +1,24 @@
+{% extends 'authority/home index.html' %}
+{% block body %}
+
+<body><form action="" method="post"><table class="table table-bordered">
+  <tr>
+    <td>Si.no</td>
+    <td>Date</td>
+    <td>Time</td>
+    <td>photo</td>
+    <td>&nbsp;</td>
+  </tr>
+    {% for i in data %}
+  <tr>
+    <td>{{ forloop.counter }}</td>
+    <td>&nbsp;{{ i.date }}</td>
+    <td>&nbsp;{{ i.time }}</td>
+    <td>&nbsp;<img src ="{{ i.photo }}"height="100px" width="100px"> </td>
+    <td> <a href="/myapp/view_included_faces/{{ i.id }}" class="btn btn-outline-warning">View Included Faces</a><br></td>
+  </tr>
+    {% endfor %}
+</table>
+</form>
+</body>
+{% endblock %}

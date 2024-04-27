@@ -1,0 +1,29 @@
+{% extends 'authority/home index.html' %}
+{% block body %}
+
+<body><form action="" method="post"><table class="table table-bordered">
+  <tr>
+    <td>Name</td>
+    <td>{{ data.name }}</td>
+  </tr>
+  <tr>
+    <td>DOB</td>
+    <td>&nbsp;{{ data.dateofbirth }}</td>
+  </tr>
+  <tr>
+    <td>Gender</td>
+    <td>&nbsp;{{ data.gender }}</td>
+  </tr>
+  <tr>
+    <td>Email</td>
+    <td>&nbsp;{{ data.email }}</td>
+  </tr>
+  <tr>
+    <td>Phone</td>
+    <td>{{ data.phone }}</td>
+  </tr>
+</table>
+    <a href="/myapp/authority_change_password/" class="btn btn-outline-warning">Change Password</a><br>
+</form>
+</body>
+{% endblock %}

@@ -1,0 +1,77 @@
+{% extends 'Admin/home index.html' %}
+{% block body %}
+
+<body><form action="/myapp/admin_add_student_post/" method="post" enctype="multipart/form-data"><table class="table table-bordered">
+    {% csrf_token %}
+  <tr>
+    <td>photo</td>
+    <td><input type="file" name="photo" id="textfield" class="form-control" required/></td>
+  </tr> <tr>
+    <td>Name</td>
+    <td><input type="text" name="textfield" id="textfield" class="form-control" required/></td>
+  </tr>
+  <tr>
+    <td>DOB</td>
+    <td><input type="date" name="textfield2" id="textfield2" class="form-control" required/></td>
+  </tr>
+  <tr>
+    <td height="40"><p>Gender</p></td>
+    <td><p>Male
+      <input type="radio" name="radio" id="radio" value="Male"checked />
+      </p>
+      <p>Female
+        <input type="radio" name="radio" id="radio2" value="Female" />
+      </p></td>
+  </tr>
+  <tr>
+    <td>Course</td>
+    <td><select name="select" class="form-control">
+        {%  for i in data %}
+            <option value="{{ i.id }}">{{ i.coursename }}</option>
+        {%  endfor  %}
+    </select></td>
+  </tr>
+  <tr>
+    <td>Email</td>
+    <td><input type="email" name="textfield3" id="textfield3" class="form-control"required/></td>
+  </tr>
+  <tr>
+    <td>Ph.No</td>
+    <td><input type="text" name="textfield4" id="textfield4" class="form-control"pattern="[9876][0-9]{9}" maxlength="10" required/></td>
+  </tr>
+  <tr>
+    <td>Place</td>
+    <td><input type="text" name="textfield5" id="textfield5" class="form-control" required/></td>
+  </tr>
+  <tr>
+    <td>Post</td>
+    <td><input type="text" name="textfield6" id="textfield6" class="form-control" required/></td>
+  </tr>
+  <tr>
+    <td>Pin</td>
+    <td><input type="text" name="textfield7" id="textfield7" class="form-control"pattern="[0-9]{6}" maxlength="6"/></td>
+  </tr>
+  <tr>
+    <td>District</td>
+    <td><input type="text" name="textfield8" id="textfield8" class="form-control"required/></td>
+  </tr>
+  <tr>
+    <td>Guardian Name</td>
+    <td><input type="text" name="textfield9" id="textfield9" class="form-control"required/></td>
+  </tr>
+  <tr>
+    <td>Guardian Phone</td>
+    <td><input type="text" name="textfield10" id="textfield10" class="form-control"pattern="[9876][0-9]{9}" maxlength="10"/></td>
+  </tr>
+  <tr>
+    <td>Guardian Email</td>
+    <td><input type="email" name="textfield11" id="textfield11" class="form-control"required/></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input type="submit" name="button" id="button" value="Add" class="btn btn-danger"/></td>
+  </tr>
+</table>
+</form>
+</body>
+{% endblock %}

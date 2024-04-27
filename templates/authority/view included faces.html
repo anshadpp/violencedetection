@@ -1,0 +1,38 @@
+{% extends 'authority/view violence.html' %}
+{% block body %}
+
+<body><form action="" method="post"><table class="table table-bordered">
+
+  <tr>
+    <td>photo</td>
+    <td><img src="{{ data.0.STUDENT.photo }}" height="80" width="80"> </td>
+  </tr>
+  <tr>
+    <td>Name</td>
+    <td>{{ data.0.STUDENT.name }}</td>
+  </tr>
+  <tr>
+    <td>Course</td>
+    <td>&nbsp;{{ data.0.STUDENT.COURSE.coursename }}</td>
+  </tr>
+  <tr>
+    <td>Department</td>
+    <td>&nbsp;{{ data.0.STUDENT.COURSE.DEPARTMENT.departmentname }}</td>
+  </tr>
+  <tr>
+    <td>Email</td>
+    <td>&nbsp;{{ data.0.STUDENT.email }}</td>
+  </tr>
+  <tr>
+    <td>Phone</td>
+    <td>{{ data.0.STUDENT.phone }}</td>
+  </tr>
+  <tr>
+    <td>Parent Details</td>
+    <td>{{ data.0.STUDENT.guardianname }}<br>{{ data.0.STUDENT.guardianemail }}<br>{{ data.0.STUDENT.guardianphone }}</td>
+  </tr>
+</table>
+
+</form>
+</body>
+{% endblock %}

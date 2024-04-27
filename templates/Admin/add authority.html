@@ -1,0 +1,37 @@
+{% extends 'Admin/home index.html' %}
+{% block body %}
+<body><form action="/myapp/admin_add_authority_post/" method="post"><table class="table table-bordered">
+    {% csrf_token %}
+  <tr>
+    <td>Name</td>
+    <td><input type="text" name="textfield" id="textfield" class="form-control" required/></td>
+  </tr>
+  <tr>
+    <td>DOB</td>
+    <td><input type="date" name="textfield2" id="textfield2" class="form-control"required/></td>
+  </tr>
+  <tr>
+    <td>Gender</td>
+    <td><p>Male
+      <input type="radio" name="radio" id="radio" value="Male" checked/>
+    </p>
+      <p>Female
+        <input type="radio" name="radio" id="radio2" value="Female" />
+      </p></td>
+  </tr>
+  <tr>
+    <td>Email</td>
+    <td><input type="email" name="textfield3" id="textfield3" class="form-control"required/></td>
+  </tr>
+  <tr>
+    <td>Ph.no</td>
+    <td><input type="text" name="textfield4" id="textfield4" class="form-control" required pattern="[9876][0-9]{9}" maxlength="10"/></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input type="submit" name="button" id="button" value="Add" class="btn btn-danger"/></td>
+  </tr>
+</table>
+</form>
+</body>
+{% endblock %}

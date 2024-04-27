@@ -1,0 +1,49 @@
+{% extends 'Admin/home index.html' %}
+{% block body %}
+
+<body><form action="/myapp/admin_view_staff_post/#abc" method="post"><table class="table table-bordered">
+    {% csrf_token %}
+  <tr>
+    <td><input type="text" name="textfield" id="textfield" class="form-control" required/></td>
+    <td><input type="submit" name="button" id="button" value="Search" class="btn btn-info" /></td>
+  </tr>
+</table>
+  <table class="table table-bordered">
+    <tr>
+      <td width="41">SI.no</td>
+        <td>photo</td>
+      <td width="46">Name</td>
+      <td width="41">DOB</td>
+      <td width="58">Gender</td>
+      <td width="43">Dept Name</td>
+      <td width="47">Email</td>
+      <td width="34">Ph.no</td>
+      <td width="44">Place</td>
+      <td width="34">Post</td>
+      <td width="26">Pin</td>
+      <td width="33">Dist</td>
+      <td width="19">&nbsp;</td>
+       <td width="19">&nbsp;</td>
+    </tr>
+      {% for i in data %}
+    <tr>
+      <td>&nbsp;{{ forloop.counter }}</td>
+         <td><img src="{{ i.photo }}" height="100"width="100"> </td>
+      <td>{{ i.name }}</td>
+      <td>{{ i.dateofbirth }}&nbsp;</td>
+      <td>{{ i.gender }}</td>
+      <td>&nbsp;{{ i.DEPARTMENT.departmentname }}</td>
+      <td>&nbsp;{{ i.email }}</td>
+      <td>{{ i.phone }}</td>
+      <td>&nbsp;{{ i.place }}</td>
+      <td>{{ i.post }}</td>
+      <td>&nbsp;{{ i.pin }}</td>
+      <td>&nbsp;{{ i.dist }}</td>
+      <td><a href="/myapp/edit_staff/{{ i.id }}#abc" class="btn btn-info">Edit</a></td>
+        <td><a href="/myapp/delete_staff/{{ i.LOGIN.id }}" class="btn btn-danger" onclick="return confirm('Are you sure?')" ">Delete</a></td>
+    </tr>
+      {% endfor %}
+  </table>
+</form>
+</body>
+{% endblock %}

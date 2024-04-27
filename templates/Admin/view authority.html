@@ -1,0 +1,35 @@
+{% extends 'Admin/home index.html' %}
+{% block body %}
+
+<body><form action="/myapp/admin_view_authority_post/#abc" method="post"><table class="table table-bordered">
+    {% csrf_token %}
+  <tr>
+    <td><input type="text" name="textfield" id="textfield" class="form-control" required/></td>
+    <td><input type="submit" name="button" id="button" value="Search" class="btn btn-info" /></td>
+  </tr>
+</table>
+  <table class="table table-bordered">
+    <tr>
+      <td>SI.no</td>
+      <td>Name</td>
+      <td>DOB</td>
+      <td>Gender</td>
+      <td>Email</td>
+      <td>PH.no</td>
+    </tr>
+      {% for i in data %}
+    <tr>
+      <td>&nbsp;{{ forloop.counter }}</td>
+      <td>&nbsp;{{ i.name }}</td>
+      <td>&nbsp;{{ i.dateofbirth }}</td>
+      <td>&nbsp;{{ i.gender }}</td>
+      <td>{{ i.email }}</td>
+      <td>{{ i.phone }}</td>
+      <td><a href="/myapp/edit_authority/{{ i.id }}#abc" class="btn btn-info">Edit</a></td>
+      <td><a href="/myapp/delete_authority/{{ i.LOGIN.id }}" class="btn btn-danger" onclick="return confirm('Are you sure?')"">Delete</a></td>
+    </tr>
+      {%  endfor %}
+  </table>
+</form>
+</body>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'Admin/home index.html' %}
+{% block body %}
+
+<body>
+<form id="form1" name="form1" method="post" action="/myapp/admin_view_student_post/#abc">
+    {% csrf_token %}
+  <table class="table table-bordered">
+    <tr>
+      <td><input type="text" name="textfield" id="textfield" class="form-control" required/></td>
+      <td><input type="submit" name="button" id="button" value="Search" class="btn btn-info"/></td>
+    </tr>
+  </table>
+  <table class="table table-bordered">
+    <tr>
+      <td>SI.no</td>
+        <td>Student</td>
+      <td>DOB</td>
+      <td>Course name</td>
+      <td>Gender</td>
+      <td>Email</td>
+      <td>Ph.no</td>
+      <td>Address</td>
+      <td>Guardian Details</td>
+
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+      {% for i in data %}
+    <tr>
+      <td>&nbsp;{{ forloop.counter }}</td>
+        <td>{{ i.name }}<br><img src="{{ i.photo }}" height="100"width="100"> </td>
+      <td>&nbsp;{{ i.dateofbirth }}</td>
+      <td>&nbsp;{{ i.COURSE.coursename }}</td>
+      <td>&nbsp;{{ i.gender }}</td>
+      <td>&nbsp;{{ i.email }}</td>
+      <td>&nbsp;{{ i.phone }}</td>
+      <td>&nbsp;{{ i.place }}<br>{{ i.pin }}<br>{{ i.dist }}<br>{{ i.post }}</td>
+      <td>{{ i.guardianname }}&nbsp;<br>{{ i.guardianphone }}<br>&nbsp;{{ i.guardianemail }}</td>
+      <td><a href="/myapp/edit_student/{{ i.id }}#abc" class="btn btn-info">Edit</a></td>
+      <td><a href="/myapp/delete_student/{{ i.LOGIN.id }}" class="btn btn-danger" onclick="return confirm('Are you sure?')" ">Delete</a></td>
+    </tr>
+      {% endfor %}
+  </table>
+</form>
+</body>
+{% endblock %}

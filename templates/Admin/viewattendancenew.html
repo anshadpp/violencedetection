@@ -1,0 +1,97 @@
+{% extends 'admin/home index.html' %}
+{% block body %}
+<body>
+<form id="form1" name="form1" method="post" action="/myapp/viewattendance_post/">
+    {% csrf_token %}
+  <table class="pull-left">
+    <tr>
+      <td>Course</td>
+      <td>
+           <select name="course" class="form-control" required>
+                  {% for i in c %}
+                  <option value="{{ i.id }}">{{ i.coursename }}</option>
+                  {% endfor %}
+              </select>
+      </td>
+{#      <td>Semester</td>#}
+{#      <td>#}
+{#          <select name="semsester" class="form-control" required>#}
+{#                  <option value="1">Semester1</option>#}
+{#                  <option value="2">Semester2</option>#}
+{#                  <option value="3">Semester3</option>#}
+{#                  <option value="4">Semester4</option>#}
+{#                  <option value="5">Semester5</option>#}
+{#                  <option value="6">Semester6</option>#}
+{#              </select>#}
+{#      </td>#}
+    <td>Choose Year</td>
+     <td>
+          <select name="year" class="form-control">
+              <option value="2023">2023</option>
+              <option value="2024">2024</option>
+
+
+          </select>
+      </td>
+    <td>Choose Month</td>
+
+      <td>
+          <select name="month" class="form-control">
+              <option value="1">January</option>
+              <option value="2">February</option>
+              <option value="3">March</option>
+              <option value="4">APril</option>
+              <option value="5">May</option>
+              <option value="6">June</option>
+              <option value="7">July</option>
+              <option value="8">August</option>
+              <option value="9">September</option>
+              <option value="10">October</option>
+              <option value="11">Novemeber</option>
+              <option value="12">December</option>
+
+          </select>
+      </td>
+
+
+
+      <td><input type="submit" name="button" id="button" value="Search" class="btn btn-success"/></td>
+
+    </tr>
+  </table>
+
+    <br><br>
+
+  <table class="table table-bordered">
+
+        <tr>
+            <td>Sno</td>
+            <td>Name</td>
+            {% for i in dates %}
+
+               <td style="writing-mode: vertical-lr">{{ i }}</td>
+
+            {% endfor %}
+        </tr>
+
+
+      {% for i in data %}
+    <tr>
+        <td width="50px"> {{ forloop.counter }}</td>
+
+
+
+
+        {% for j in i %}
+            {% if j.status == "name" %}
+            <td>&nbsp;{{ j.count }}</td>
+            {% else %}
+             <td width="50px">&nbsp;{{ j.count }}</td>
+            {% endif %}
+        {% endfor %}
+    </tr>
+      {% endfor %}
+  </table>
+</form>
+</body>
+{% endblock %}

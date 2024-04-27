@@ -1,0 +1,43 @@
+{% extends 'Admin/home index.html' %}
+{% block body %}
+
+<body><form action="/myapp/admin_view_complaint_post/#abc" method="post"><table class="pull-left">
+    {% csrf_token %}
+  <tr>
+    <td>From</td>
+    <td><input type="date" name="textfield" id="textfield" required/></td>
+    <td>To</td>
+    <td><input type="date" name="textfield2" id="textfield2" required/></td>
+    <td><input type="submit" name="button" id="button" value="Search" class="btn btn-success"/></td>
+  </tr>
+</table>
+  <table class="table table-bordered">
+    <tr>
+      <td>Si.no</td>
+      <td>Date</td>
+      <td>Complaint</td>
+      <td>From</td>
+      <td>Status</td>
+      <td>&nbsp;Reply</td>
+    </tr>
+      {% for i in data %}
+    <tr>
+      <td>&nbsp;{{ forloop.counter }}</td>
+      <td>&nbsp;{{ i.date }}</td>
+      <td>&nbsp;{{ i.LOGIN.username }}</td>
+      <td>&nbsp;{{ i.complaint }}</td>
+      <td>&nbsp;{{ i.status }}</td>
+      <td>
+
+          {% if i.status == 'pending' %}
+          <a href="/myapp/send_reply/{{ i.id }}#abc" class="btn btn-success">Reply</a>
+          {% else %}
+          {{ i.reply }}
+          {% endif %}
+      </td>
+    </tr>
+      {% endfor %}
+  </table>
+</form>
+</body>
+{% endblock %}

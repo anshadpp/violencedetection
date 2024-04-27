@@ -1,0 +1,28 @@
+{% extends 'authority/home index.html' %}
+{% block body %}
+
+<body><form action="" method="post"><table class="table table-bordered">
+  <tr>
+    <td>Si.no</td>
+    <td>Student</td>
+    <td>Date</td>
+    <td>Hour</td>
+{#    <td>Time</td>#}
+{#    <td>Photo</td>#}
+{#    <td>Status</td>#}
+  </tr>
+    {% for i in data %}
+  <tr>
+    <td>&nbsp;{{ forloop.counter }}</td>
+    <td>&nbsp;{{ i.STUDENT.name }}</td>
+    <td>&nbsp;{{ i.date }}</td>
+    <td>{{ i.hour }}</td>
+{#    <td>{{ i.time }}</td>#}
+{#    <td><img src ="{{ i.photo }}"height="100px" width="100px"></td>#}
+{#    <td>&nbsp;{{ i.status }}</td>#}
+  </tr>
+    {% endfor %}
+</table>
+</form>
+</body>
+{% endblock %}
